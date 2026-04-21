@@ -1,48 +1,118 @@
-# Sistema de Gestión de Gastronomía
+# MyGuest v2.0: Gestión Inteligente de Suministros Gastronómicos
 
-API REST con FastAPI + Supabase (PostgreSQL) para gestión de inventario y talleres.
+**MyGuest v2.0** es una solución de reingeniería integral diseñada para mitigar los riesgos operacionales de la gestión manual en entornos gastronómicos académicos de alta complejidad.  
 
-## Requisitos
-- Python 3.11+
-- Cuenta en Supabase (supabase.com)
+El sistema actúa como el núcleo de inteligencia operativa, garantizando **rentabilidad** y **trazabilidad forense** de la materia prima mediante automatización con IA local.
 
-## Instalación
+---
 
-```bash
-# 1. Clonar el repositorio
-git clone <repo>
-cd gastronomia_app
+## 🚀 El Problema y la Solución
 
-# 2. Crear entorno virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
+### ❌ Problema
+La gestión manual ("trabajo de chino") generaba:
+- Opacidad financiera  
+- Errores humanos  
+- Brecha crítica entre la teoría y la operación real de bodega  
 
-# 3. Instalar dependencias
-pip install -r requirements.txt
+### ✅ Solución
+Un ecosistema digital de **9 módulos interconectados** que:
+- Eliminan la digitación manual  
+- Entregan **costos al dedillo en tiempo real**  
 
-# 4. Configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus credenciales de Supabase
+---
 
-# 5. Correr el servidor
-uvicorn app.main:app --reload
-```
+## 🛠️ Módulos Principales
 
-## Documentación
-- Swagger UI: http://localhost:8000/docs
-- Redoc:       http://localhost:8000/redoc
+El sistema se compone de los siguientes pilares funcionales:
 
-## Estructura
-```
-app/
-├── main.py          # Entrada FastAPI, CORS, routers
-├── config.py        # Variables de entorno (Pydantic Settings)
-├── database.py      # Engine async, sesión SQLAlchemy, Base
-├── dependencies.py  # JWT auth, inyección de dependencias
-├── models/          # Modelos SQLAlchemy (tablas)
-├── schemas/         # Schemas Pydantic (validación)
-├── routers/         # Endpoints por entidad
-├── services/        # Lógica de negocio
-└── ia/              # Módulo Gemma 4 (fase posterior)
-```
+- **🔐 Seguridad**  
+  Matriz de roles estricta (Administrador, Bodega, Chef, Contabilidad)
+
+- **📦 Inventario (Core)**  
+  Gestión de 1,260 ítems con control de lotes y caducidad
+
+- **🛒 Compras y Proveedores**  
+  Seguimiento de órdenes de compra (OC) y directorio centralizado
+
+- **🧾 Facturación**  
+  Control de cuentas por pagar y actualización de precios
+
+- **📉 Mermas y Rendimientos**  
+  Clasificación de pérdidas:
+  - Pedagógica  
+  - Operacional  
+  - Calidad  
+
+- **🍽️ Recetas (Escandallos)**  
+  Fichas técnicas con costeo automático y dinámico
+
+- **🎓 Operación Académica**  
+  Generación automatizada de "Carros" de insumos por clase
+
+- **📊 Dashboard (BI)**  
+  Reportes de:
+  - Valoración de stock  
+  - Gastos por profesor  
+  - Proyecciones  
+
+- **🤖 Ingesta Inteligente (IA)**  
+  Automatización del ciclo de vida de la factura
+
+---
+
+## 🧠 Innovación: Ingesta Inteligente con IA
+
+El corazón del sistema es un motor de IA que gestiona la entrada de datos en **5 fases**:
+
+1. **Extracción**  
+   Lectura automática de metadatos mediante OCR  
+
+2. **Split-Screen**  
+   Interfaz ergonómica de pantalla dividida para validación visual  
+
+3. **Match (Homologación)**  
+   Aprendizaje automático para enlazar productos del proveedor con el catálogo interno  
+
+4. **Conciliación**  
+   Cruce contra la Orden de Compra con alertas de discrepancia  
+
+5. **Commit**  
+   Actualización inmutable y simultánea de:
+   - Stock  
+   - Costos  
+   - Contabilidad  
+
+---
+
+## 💻 Stack Tecnológico
+
+- **Backend & IA:**  
+  Python (API robusta y procesamiento de documentos)
+
+- **Frontend:**  
+  Framework reactivo (React o Angular)
+
+- **Base de Datos:**  
+  PostgreSQL (Transacciones ACID y registros inmutables con hashes)
+
+- **Infraestructura:**  
+  Despliegue en la nube (IaaS / PaaS) para disponibilidad remota
+
+---
+
+## 📊 Atributos de Calidad
+
+- **🔒 Seguridad**  
+  Registro inmutable en cada transacción con hash del documento  
+
+- **🎯 Precisión**  
+  Recálculo automático de costos con cada nueva factura  
+
+- **⏱️ Oportunidad**  
+  Alertas de faltantes en tiempo real mediante notificaciones push  
+
+---
+
+## 📌 Notas
+
+Este sistema está diseñado para entornos académicos gastronómicos de alta exigencia, donde la trazabilidad, precisión y eficiencia operativa son críticas.
