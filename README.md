@@ -115,4 +115,4 @@ El corazón del sistema es un motor de IA que gestiona la entrada de datos en **
 
 ## 📌 Notas
 
-Este sistema está diseñado para entornos académicos gastronómicos de alta exigencia, donde la trazabilidad, precisión y eficiencia operativa son críticas.
+v 0.0.1 : Modulo de login en desarrollo 
