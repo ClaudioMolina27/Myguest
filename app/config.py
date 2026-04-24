@@ -1,19 +1,18 @@
 from pydantic_settings import BaseSettings
 from functools import lru_cache
+from typing import Optional
 
 
 class Settings(BaseSettings):
-    # Supabase
-    supabase_url: str
-    supabase_key: str
     database_url: str
 
-    # JWT
+    supabase_url: Optional[str] = None
+    supabase_key: Optional[str] = None
+
     secret_key: str
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 60
 
-    # App
     app_env: str = "development"
     app_name: str = "Sistema Gastronomia"
 

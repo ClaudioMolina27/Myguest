@@ -1,21 +1,31 @@
-from pydantic import BaseModel, EmailStr, ConfigDict
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
-# Esquema base compartido
-class UsuarioBase(BaseModel):
-    rut: str
-    nombre_completo: str
-    email: EmailStr
-    id_perfil: int
-    activo: bool = True
 
-# Esquema para recibir datos al crear (incluye la contraseña en texto plano)
+class UsuarioBase(BaseModel):
+    login: str
+    primer_apellido: str
+    segundo_apellido: Optional[str] = None
+    nom: str
+    nom_preferido: Optional[str] = None
+    cod_perfil: int
+    cod_carrera: int
+
+
 class UsuarioCreate(UsuarioBase):
     password: str
 
-# Esquema para responder al frontend (nunca incluye la contraseña)
+
+class UsuarioUpdate(BaseModel):
+    primer_apellido: Optional[str] = None
+    segundo_apellido: Optional[str] = None
+    nom: Optional[str] = None
+    nom_preferido: Optional[str] = None
+    cod_perfil: Optional[int] = None
+    cod_carrera: Optional[int] = None
+
+
 class UsuarioResponse(UsuarioBase):
     id_usuario: int
 
-    # Permite a Pydantic leer directamente del modelo SQLAlchemy
     model_config = ConfigDict(from_attributes=True)

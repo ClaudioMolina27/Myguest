@@ -1,33 +1,57 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from app.models.usuario_model import Usuario
-from app.schemas.usuario_schema import UsuarioCreate
+from app.schemas.usuario_schema import UsuarioCreate, UsuarioUpdate
 from app.utils.security import get_password_hash
 
-async def get_usuario_by_email(db: AsyncSession, email: str):
-    result = await db.execute(select(Usuario).where(Usuario.email == email))
+
+async def get_usuario_by_id(db: AsyncSession, id_usuario: int):
+    result = await db.execute(select(Usuario).where(Usuario.id_usuario == id_usuario))
     return result.scalars().first()
 
-async def create_usuario(db: AsyncSession, usuario_in: UsuarioCreate):
-    # Encriptamos la contraseña antes de guardar
-    hashed_password = get_password_hash(usuario_in.password)
-    
-    # Mapeamos los datos al modelo SQLAlchemy
-    nuevo_usuario = Usuario(
-        rut=usuario_in.rut,
-        nombre_completo=usuario_in.nombre_completo,
-        email=usuario_in.email,
-        password_hash=hashed_password,
-        id_perfil=usuario_in.id_perfil,
-        activo=usuario_in.activo
-    )
-    
-    db.add(nuevo_usuario)
-    await db.commit()
-    await db.refresh(nuevo_usuario) # Recargamos para obtener el id_usuario generado
-    
-    return nuevo_usuario
+
+async def get_usuario_by_login(db: AsyncSession, login: str):
+    result = await db.execute(select(Usuario).where(Usuario.login == login))
+    return result.scalars().first()
+
 
 async def get_usuarios(db: AsyncSession):
     result = await db.execute(select(Usuario))
     return result.scalars().all()
+
+
+async def create_usuario(db: AsyncSession, usuario_in: UsuarioCreate):
+    nuevo = Usuario(
+        login=usuario_in.login,
+        hash_password=get_password_hash(usuario_in.password),
+        primer_apellido=usuario_in.primer_apellido,
+        segundo_apellido=usuario_in.segundo_apellido,
+        nom=usuario_in.nom,
+        nom_preferido=usuario_in.nom_preferido,
+        cod_perfil=usuario_in.cod_perfil,
+        cod_carrera=usuario_in.cod_carrera,
+    )
+    db.add(nuevo)
+    await db.commit()
+    await db.refresh(nuevo)
+    return nuevo
+
+
+async def update_usuario(db: AsyncSession, id_usuario: int, datos: UsuarioUpdate):
+    usuario = await get_usuario_by_id(db, id_usuario)
+    if not usuario:
+        return None
+    for campo, valor in datos.model_dump(exclude_unset=True).items():
+        setattr(usuario, campo, valor)
+    await db.commit()
+    await db.refresh(usuario)
+    return usuario
+
+
+async def delete_usuario(db: AsyncSession, id_usuario: int):
+    usuario = await get_usuario_by_id(db, id_usuario)
+    if not usuario:
+        return False
+    await db.delete(usuario)
+    await db.commit()
+    return True

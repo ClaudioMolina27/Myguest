@@ -1,15 +1,15 @@
-from sqlalchemy import String, ForeignKey, Boolean
+from sqlalchemy import String, SmallInteger, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database import Base
+
 
 class Perfil(Base):
     __tablename__ = "perfil"
 
-    id_perfil: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    nombre: Mapped[str] = mapped_column(String(50), unique=True, nullable=False)
-    descripcion: Mapped[str | None] = mapped_column(String(200))
+    cod_perfil: Mapped[int] = mapped_column(SmallInteger, primary_key=True)
+    nom_perfil: Mapped[str] = mapped_column(String(30), nullable=False)
+    descripcion: Mapped[str] = mapped_column(String(500), nullable=False)
 
-    # Relación inversa
     usuarios: Mapped[list["Usuario"]] = relationship(back_populates="perfil")
 
 
@@ -17,13 +17,13 @@ class Usuario(Base):
     __tablename__ = "usuario"
 
     id_usuario: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    rut: Mapped[str] = mapped_column(String(12), unique=True, nullable=False)
-    nombre_completo: Mapped[str] = mapped_column(String(100), nullable=False)
-    email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
-    password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
-    activo: Mapped[bool] = mapped_column(Boolean, default=True)
-    
-    id_perfil: Mapped[int] = mapped_column(ForeignKey("perfil.id_perfil"))
+    login: Mapped[str] = mapped_column(String(40), nullable=False, unique=True)
+    hash_password: Mapped[str] = mapped_column(String(256), nullable=False)
+    primer_apellido: Mapped[str] = mapped_column(String(20), nullable=False)
+    segundo_apellido: Mapped[str | None] = mapped_column(String(20))
+    nom: Mapped[str] = mapped_column(String(20), nullable=False)
+    nom_preferido: Mapped[str | None] = mapped_column(String(20))
+    cod_perfil: Mapped[int] = mapped_column(SmallInteger, ForeignKey("perfil.cod_perfil"), nullable=False)
+    cod_carrera: Mapped[int] = mapped_column(SmallInteger, ForeignKey("carrera.cod_carrera"), nullable=False)
 
-    # Relación directa
     perfil: Mapped["Perfil"] = relationship(back_populates="usuarios")
