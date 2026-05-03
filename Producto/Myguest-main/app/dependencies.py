@@ -1,43 +1,49 @@
 from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
+from jose import jwt, JWTError
 
-from app.config import get_settings
 from app.database import get_db
+from app.config import get_settings
 
 settings = get_settings()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
+bearer_scheme = HTTPBearer()
 
 
 async def get_current_user(
-    token: str = Depends(oauth2_scheme),
-    db: AsyncSession = Depends(get_db),
+    credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
+    db: AsyncSession = Depends(get_db)
 ):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Token invalido o expirado",
+        detail="Token inválido o expirado",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
-        user_id: int = payload.get("sub")
-        if user_id is None:
+        payload = jwt.decode(
+            credentials.credentials,
+            settings.secret_key,
+            algorithms=[settings.algorithm]
+        )
+        id_usuario: str = payload.get("sub")
+        if id_usuario is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
 
-    # Se completara cuando este el modelo Usuario
-    return {"id": user_id, "perfil": payload.get("perfil")}
+    from app.services.usuario_service import get_usuario_by_id
+    usuario = await get_usuario_by_id(db, int(id_usuario))
+    if usuario is None:
+        raise credentials_exception
+    return usuario
 
 
-def require_perfil(perfil_id: int):
-    """Decorador para restringir endpoints por perfil."""
-    async def checker(current_user=Depends(get_current_user)):
-        if current_user["perfil"] != perfil_id:
+def require_perfil(*perfiles: int):
+    async def verificar(usuario=Depends(get_current_user)):
+        if usuario.cod_perfil not in perfiles:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,
-                detail="No tienes permisos para esta accion",
+                detail="No tienes permisos para realizar esta acción"
             )
-        return current_user
-    return checker
+        return usuario
+    return verificar
