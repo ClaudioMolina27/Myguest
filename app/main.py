@@ -34,12 +34,7 @@ app.add_middleware(
 )
 
 from app.routers.usuario_router import router as usuario_router
-from app.routers.auth_router import router as auth_router
-from app.routers.inventario_router import router as inventario_router
-
-app.include_router(auth_router,      prefix="/auth",      tags=["Auth"])
-app.include_router(usuario_router,   prefix="/usuarios",  tags=["Usuarios"])
-app.include_router(inventario_router, prefix="",          tags=["Inventario"])
+app.include_router(usuario_router, prefix="/usuarios", tags=["Usuarios"])
 
 
 @app.get("/", tags=["Health"])
