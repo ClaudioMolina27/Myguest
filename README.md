@@ -115,5 +115,5 @@ El corazón del sistema es un motor de IA que gestiona la entrada de datos en **
 
 ## 📌 Notas
 
-v 0.0.1 : Modulo de login en desarrollo 
-v 0.2.1 : Modulo de login  y Auth Comepletados ambos pasan a fase de pruebas una vez se linkeen con el front
+-v 0.0.1 : Modulo de login en desarrollo 
+-v 0.2.1 : Modulo de login  y Auth Comepletados ambos pasan a fase de pruebas una vez se linkeen con el front
