@@ -1,0 +1,63 @@
+.topbar {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.dark {
+  background-color: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+.light {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.duocLogo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.duocText {
+  font-size: 20px;
+  font-weight: 800;
+  color: #f59e0b;
+  letter-spacing: -0.5px;
+}
+
+.ucText {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1e3a5f;
+  letter-spacing: -0.5px;
+}
+
+.separator {
+  color: #4b5563;
+  font-size: 18px;
+}
+
+.carrera {
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.light .carrera {
+  color: #6b7280;
+}

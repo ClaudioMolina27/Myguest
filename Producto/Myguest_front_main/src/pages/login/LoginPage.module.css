@@ -1,0 +1,190 @@
+/* Contenedor principal */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  padding-top: 52px;
+}
+
+.dark {
+  background-color: #0f0f0f;
+}
+
+.light {
+  background-color: #f0f2f5;
+}
+
+/* Botón tema */
+.themeBtn {
+  position: fixed;
+  top: 64px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background-color: #2a2a2a;
+}
+
+.themeBtn:hover {
+  transform: scale(1.1);
+}
+
+/* Card */
+.card {
+  background-color: #1a1a1a;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.light .card {
+  background-color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  width: 64px;
+  height: 64px;
+  background-color: #22c55e;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 28px;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.light .title {
+  color: #111827;
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Campos */
+.field {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  color: #d1d5db;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.light .label {
+  color: #374151;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.inputDark {
+  border-color: #374151;
+  background-color: #111827;
+  color: #ffffff;
+}
+
+.inputDark:focus {
+  border-color: #22c55e;
+}
+
+.inputLight {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+.inputLight:focus {
+  border-color: #22c55e;
+}
+
+/* Error */
+.error {
+  background-color: #2d1b1b;
+  border: 1px solid #f87171;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ef4444;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* Botón submit */
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  background-color: #22c55e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitBtn:hover {
+  background-color: #16a34a;
+}
+
+.submitBtnLoading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  color: #6b7280;
+  font-size: 12px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
