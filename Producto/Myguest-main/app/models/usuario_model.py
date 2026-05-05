@@ -24,6 +24,6 @@ class Usuario(Base):
     nom: Mapped[str] = mapped_column(String(20), nullable=False)
     nom_preferido: Mapped[str | None] = mapped_column(String(20))
     cod_perfil: Mapped[int] = mapped_column(SmallInteger, ForeignKey("perfil.cod_perfil"), nullable=False)
-    cod_carrera: Mapped[int] = mapped_column(SmallInteger, ForeignKey("carrera.cod_carrera"), nullable=False)
+    cod_carrera: Mapped[int] = mapped_column(SmallInteger, nullable=False)
 
     perfil: Mapped["Perfil"] = relationship(back_populates="usuarios")

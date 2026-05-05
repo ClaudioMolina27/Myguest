@@ -1,21 +1,19 @@
-import useAuthStore from '../../store/authStore'
-import { useNavigate } from 'react-router-dom'
+import MainLayout from '../../layouts/MainLayout'
+import useThemeStore from '../../store/themeStore'
+import styles from './DashboardPage.module.css'
 
 const DashboardPage = () => {
-  const { usuario, logout } = useAuthStore()
-  const navigate = useNavigate()
-
-  const handleLogout = () => {
-    logout()
-    navigate('/login')
-  }
+  const { isDark } = useThemeStore()
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Bienvenido, {usuario?.nom} {usuario?.primer_apellido}</h1>
-      <p>Perfil: {usuario?.cod_perfil === 0 ? 'Administrador TI' : usuario?.cod_perfil === 1 ? 'Administrador de carrera' : 'Docente'}</p>
-      <button onClick={handleLogout}>Cerrar sesión</button>
-    </div>
+    <MainLayout>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1 className={`${styles.title} ${isDark ? styles.dark : styles.light}`}>Dashboard</h1>
+          <p className={styles.subtitle}>Vista general del sistema</p>
+        </div>
+      </div>
+    </MainLayout>
   )
 }
 

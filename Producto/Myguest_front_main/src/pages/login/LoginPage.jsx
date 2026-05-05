@@ -11,28 +11,39 @@ const LoginPage = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const dominiosValidos = ['@profesor.duoc.cl', '@duoc.cl']
+  const dominioValido = dominiosValidos.some(dominio => login.endsWith(dominio))
 
   const { setToken, setUsuario } = useAuthStore()
   const { isDark, toggleTheme } = useThemeStore()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-    setLoading(true)
+  e.preventDefault()
+  setError('')
+  setLoading(true)
 
-    try {
-      const data = await loginRequest(login, password)
-      setToken(data.access_token)
-      const usuario = await getMeRequest(data.access_token)
-      setUsuario(usuario)
-      navigate('/dashboard')
-    } catch (err) {
-      setError('Credenciales incorrectas. Intenta de nuevo.')
-    } finally {
-      setLoading(false)
-    }
+  const dominiosValidos = ['@profesor.duoc.cl', '@duoc.cl']
+  const dominioValido = dominiosValidos.some(dominio => login.endsWith(dominio))
+
+  if (!dominioValido) {
+    setError('Error correo o contraseña invalida')
+    setLoading(false)
+    return
   }
+
+  try {
+    const data = await loginRequest(login, password)
+    setToken(data.access_token)
+    const usuario = await getMeRequest(data.access_token)
+    setUsuario(usuario)
+    navigate('/dashboard')
+  } catch (err) {
+    setError('Credenciales incorrectas. Intenta de nuevo.')
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <div className={`${styles.container} ${isDark ? styles.dark : styles.light}`}>

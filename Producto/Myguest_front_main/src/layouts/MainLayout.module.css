@@ -1,0 +1,30 @@
+.container {
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.dark {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+.light {
+  background-color: #f0f2f5;
+  color: #111827;
+}
+
+.body {
+  display: flex;
+  padding-top: 52px;
+}
+
+.main {
+  flex: 1;
+  padding: 24px;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}
+
+.mainShifted {
+  margin-left: 240px;
+}
