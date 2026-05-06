@@ -58,6 +58,15 @@ async def delete_producto(db: AsyncSession, id_producto: int):
     producto = await get_producto_by_id(db, id_producto)
     if not producto:
         return False
+    
+    result = await db.execute(
+        select(Inventario).where(Inventario.id_producto == id_producto)
+    )
+    inventario = result.scalars().first()
+    if inventario:
+        await db.delete(inventario)
+        await db.flush()
+
     await db.delete(producto)
     await db.commit()
     return True

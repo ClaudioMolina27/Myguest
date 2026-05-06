@@ -33,7 +33,7 @@ class Producto(Base):
     precio: Mapped[int] = mapped_column(Integer, nullable=False)
     cod_unidad_medida: Mapped[int] = mapped_column(SmallInteger, ForeignKey("unidad_medida.cod_unidad_medida"), nullable=False)
     cod_categ_producto: Mapped[int] = mapped_column(SmallInteger, ForeignKey("categ_producto.cod_categ_producto"), nullable=False)
-    cod_familia: Mapped[Optional[int]] = mapped_column(SmallInteger, ForeignKey("familia_producto.cod_familia"))
+    cod_familia: Mapped[Optional[int]] = mapped_column(SmallInteger, nullable=True)
 
     categoria: Mapped["CategoriaProducto"] = relationship(back_populates="productos")
     unidad_medida: Mapped["UnidadMedida"] = relationship(back_populates="productos")
