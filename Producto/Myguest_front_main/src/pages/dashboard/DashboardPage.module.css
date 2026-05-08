@@ -2,12 +2,16 @@
   max-width: 1200px;
 }
 
+/* Header */
 .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 24px;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0 0 4px;
 }
@@ -22,6 +26,379 @@
 
 .subtitle {
   font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.bienvenida {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.bienvenidaTexto {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.bienvenidaNombre {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Tarjetas */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tarjeta {
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid;
+  transition: all 0.2s;
+}
+
+.tarjetaDark {
+  background-color: #111827;
+  border-color: #1f2937;
+}
+
+.tarjetaDark:hover {
+  border-color: #374151;
+}
+
+.tarjetaLight {
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+}
+
+.tarjetaLight:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.tarjetaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tarjetaLabel {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.tarjetaValue {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tarjetaIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenido */
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Alertas */
+.alertasCard {
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid;
+  margin-bottom: 16px;
+}
+
+.alertasCard.tarjetaDark {
+  border-color: #1f2937;
+}
+
+.alertasCard.tarjetaLight {
+  border-color: #e5e7eb;
+}
+
+.alertasHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.alertasTitle {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.alertasBadge {
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.alertasList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.alertaItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.alertaItemDark {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.alertaItemLight {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+}
+
+.alertaInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alertaNombre {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.alertaDetalle {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.alertaTag {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ef4444;
+  background-color: #ef444422;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.loadingText {
+  color: #6b7280;
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+}
+
+.emptyText {
+  color: #22c55e;
+  font-size: 14px;
+  text-align: center;
+  padding: 24px;
+}
+
+/* Módulos */
+.modulosCard {
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid;
+}
+
+.modulosList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.moduloItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.moduloItemDark {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.moduloItemDark:hover {
+  border-color: #22c55e;
+}
+
+.moduloItemLight {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+}
+
+.moduloItemLight:hover {
+  border-color: #22c55e;
+}
+
+.moduloDeshabilitado {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.moduloDeshabilitado:hover {
+  border-color: inherit !important;
+}
+
+.moduloIcon {
+  font-size: 20px;
+}
+
+.moduloLabel {
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.proximamente {
+  font-size: 10px;
+  color: #6b7280;
+  background-color: #374151;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.tarjetaAlerta {
+  background-color: #ef4444;
+  border-color: #dc2626;
+}
+
+.tarjetaAlertaValue {
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tarjetaAlerta .tarjetaLabel {
+  color: #fecaca;
+}
+
+/* Gráfico */
+.graficoCard {
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid;
+  margin-bottom: 16px;
+}
+
+/* Módulos nueva versión */
+.modulosSection {
+  margin-top: 8px;
+}
+
+.modulosGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.moduloCard {
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.moduloCardDark {
+  background-color: #111827;
+  border-color: #1f2937;
+}
+
+.moduloCardDark:hover {
+  border-color: #22c55e;
+  background-color: #1f2937;
+}
+
+.moduloCardLight {
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+}
+
+.moduloCardLight:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.moduloDeshabilitado {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.moduloDeshabilitado:hover {
+  border-color: #1f2937 !important;
+  background-color: #111827 !important;
+  box-shadow: none !important;
+}
+
+.moduloCount {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  background-color: #1f2937;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.moduloCardIcon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.moduloCardLabel {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.moduloCardDesc {
+  font-size: 13px;
   color: #6b7280;
   margin: 0;
 }

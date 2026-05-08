@@ -7,6 +7,7 @@ const menuItems = [
   { path: '/dashboard', label: 'Dashboard', icon: '📊' },
   { path: '/usuarios', label: 'Usuarios', icon: '👤' },
   { path: '/inventario', label: 'Inventario', icon: '📦' },
+  { path: '/proveedores', label: 'Proveedores', icon: '🏭' },
   { path: '/compras', label: 'Compras', icon: '🛒' },
   { path: '/facturacion', label: 'Facturación', icon: '📄' },
   { path: '/mermas', label: 'Mermas', icon: '🗑️' },

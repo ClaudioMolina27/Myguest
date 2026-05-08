@@ -35,15 +35,28 @@ const UsuarioModal = ({ onClose, onUsuarioCreado }) => {
       return;
     }
 
-    const dominiosValidos = ['@profesor.duoc.cl', '@duoc.cl']
-    const dominioValido = dominiosValidos.some(dominio => form.login.endsWith(dominio))
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(form.password)) {
+      setError(
+        "La contraseña debe tener mínimo 8 caracteres, una mayúscula y un número",
+      );
+      setLoading(false);
+      return;
+    }
+
+    const dominiosValidos = ["@profesor.duoc.cl", "@duoc.cl"];
+    const dominioValido = dominiosValidos.some((dominio) =>
+      form.login.endsWith(dominio),
+    );
 
     if (!dominioValido) {
-      setError('Solo se permiten correos institucionales (@duoc.cl o @profesor.duoc.cl)')
-      setLoading(false)
-      return
+      setError(
+        "Solo se permiten correos institucionales (@duoc.cl o @profesor.duoc.cl)",
+      );
+      setLoading(false);
+      return;
     }
-    
+
     try {
       const response = await fetch("http://127.0.0.1:8000/usuarios/", {
         method: "POST",
@@ -122,7 +135,7 @@ const UsuarioModal = ({ onClose, onUsuarioCreado }) => {
             </div>
 
             <div className={`${styles.field} ${styles.fullWidth}`}>
-              <label className={styles.label}>Apellido materno</label>
+              <label className={styles.label}>Apellido materno *</label>
               <input
                 name="segundo_apellido"
                 value={form.segundo_apellido}

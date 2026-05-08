@@ -19,6 +19,7 @@ const AppRouter = () => {
         <Route path="/usuarios" element={<PrivateRoute><UsuariosPage /></PrivateRoute>} />
         <Route path="/inventario" element={<PrivateRoute><EnConstruccion titulo="Inventario" /></PrivateRoute>} />
         <Route path="/compras" element={<PrivateRoute><EnConstruccion titulo="Compras" /></PrivateRoute>} />
+        <Route path="/proveedores" element={<PrivateRoute><EnConstruccion titulo="Proveedores" /></PrivateRoute>} />
         <Route path="/facturacion" element={<PrivateRoute><EnConstruccion titulo="Facturación" /></PrivateRoute>} />
         <Route path="/mermas" element={<PrivateRoute><EnConstruccion titulo="Mermas" /></PrivateRoute>} />
         <Route path="/reportes" element={<PrivateRoute><EnConstruccion titulo="Reportes" /></PrivateRoute>} />

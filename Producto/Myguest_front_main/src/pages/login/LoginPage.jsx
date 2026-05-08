@@ -1,63 +1,66 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { loginRequest, getMeRequest } from '../../services/authService'
-import useAuthStore from '../../store/authStore'
-import useThemeStore from '../../store/themeStore'
-import TopBar from '../../components/TopBar'
-import styles from './LoginPage.module.css'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { loginRequest, getMeRequest } from "../../services/authService";
+import useAuthStore from "../../store/authStore";
+import useThemeStore from "../../store/themeStore";
+import TopBar from "../../components/TopBar";
+import styles from "./LoginPage.module.css";
+import logoMyGuest from "../../assets/logomyguest.png";
 
 const LoginPage = () => {
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const dominiosValidos = ['@profesor.duoc.cl', '@duoc.cl']
-  const dominioValido = dominiosValidos.some(dominio => login.endsWith(dominio))
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const dominiosValidos = ["@profesor.duoc.cl", "@duoc.cl"];
+  const dominioValido = dominiosValidos.some((dominio) =>
+    login.endsWith(dominio),
+  );
 
-  const { setToken, setUsuario } = useAuthStore()
-  const { isDark, toggleTheme } = useThemeStore()
-  const navigate = useNavigate()
+  const { setToken, setUsuario } = useAuthStore();
+  const { isDark, toggleTheme } = useThemeStore();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault()
-  setError('')
-  setLoading(true)
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  const dominiosValidos = ['@profesor.duoc.cl', '@duoc.cl']
-  const dominioValido = dominiosValidos.some(dominio => login.endsWith(dominio))
+    const dominiosValidos = ["@profesor.duoc.cl", "@duoc.cl"];
+    const dominioValido = dominiosValidos.some((dominio) =>
+      login.endsWith(dominio),
+    );
 
-  if (!dominioValido) {
-    setError('Error correo o contraseña invalida')
-    setLoading(false)
-    return
-  }
+    if (!dominioValido) {
+      setError("Error correo o contraseña invalida");
+      setLoading(false);
+      return;
+    }
 
-  try {
-    const data = await loginRequest(login, password)
-    setToken(data.access_token)
-    const usuario = await getMeRequest(data.access_token)
-    setUsuario(usuario)
-    navigate('/dashboard')
-  } catch (err) {
-    setError('Credenciales incorrectas. Intenta de nuevo.')
-  } finally {
-    setLoading(false)
-  }
-}
+    try {
+      const data = await loginRequest(login, password);
+      setToken(data.access_token);
+      const usuario = await getMeRequest(data.access_token);
+      setUsuario(usuario);
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Credenciales incorrectas. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className={`${styles.container} ${isDark ? styles.dark : styles.light}`}>
-
+    <div
+      className={`${styles.container} ${isDark ? styles.dark : styles.light}`}
+    >
       <TopBar />
 
-      <button className={styles.themeBtn} onClick={toggleTheme}>
-        {isDark ? '☀️' : '🌙'}
-      </button>
-
       <div className={styles.card}>
-
         <div className={styles.header}>
-          <div className={styles.logo}>🍽️</div>
+          <div className={styles.logo}>
+            <img src={logoMyGuest} alt="My Guest" className={styles.logoImg} />
+          </div>
           <h1 className={styles.title}>My Guest</h1>
           <p className={styles.subtitle}>Sistema de Gestión Gastronómica</p>
         </div>
@@ -87,23 +90,21 @@ const LoginPage = () => {
             />
           </div>
 
-          {error && (
-            <div className={styles.error}>{error}</div>
-          )}
+          {error && <div className={styles.error}>{error}</div>}
 
           <button
             type="submit"
             disabled={loading}
-            className={`${styles.submitBtn} ${loading ? styles.submitBtnLoading : ''}`}
+            className={`${styles.submitBtn} ${loading ? styles.submitBtnLoading : ""}`}
           >
-            {loading ? 'Ingresando...' : 'Ingresar'}
+            {loading ? "Ingresando..." : "Ingresar"}
           </button>
         </form>
 
         <p className={styles.footer}>DuocUC — Carrera de Gastronomía v2.0</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;

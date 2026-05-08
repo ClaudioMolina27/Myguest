@@ -86,16 +86,6 @@ const UsuarioEditModal = ({ usuario, onClose, onUsuarioEditado }) => {
             </div>
 
             <div className={styles.field}>
-              <label className={styles.label}>Nombre preferido</label>
-              <input
-                name="nom_preferido"
-                value={form.nom_preferido}
-                onChange={handleChange}
-                className={`${styles.input} ${isDark ? styles.inputDark : styles.inputLight}`}
-              />
-            </div>
-
-            <div className={styles.field}>
               <label className={styles.label}>Apellido paterno *</label>
               <input
                 name="primer_apellido"
@@ -107,7 +97,7 @@ const UsuarioEditModal = ({ usuario, onClose, onUsuarioEditado }) => {
             </div>
 
             <div className={styles.field}>
-              <label className={styles.label}>Apellido materno</label>
+              <label className={styles.label}>Apellido materno *</label>
               <input
                 name="segundo_apellido"
                 value={form.segundo_apellido}
