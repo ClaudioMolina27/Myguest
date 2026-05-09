@@ -61,6 +61,24 @@ const ProveedoresPage = () => {
     }
   };
 
+  const activarProveedor = async (id) => {
+    try {
+      await fetch(`${API_URL}/proveedores/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ activo: true }),
+      });
+      setItemEliminar(null);
+      setExpandido(null);
+      fetchData();
+    } catch (err) {
+      console.error("Error activando proveedor:", err);
+    }
+  };
+
   const eliminarFamilia = async (cod) => {
     try {
       await fetch(`${API_URL}/familias/${cod}`, {
@@ -293,7 +311,8 @@ const ProveedoresPage = () => {
             className={`${styles.tabla} ${isDark ? styles.tablaDark : styles.tablaLight}`}
           >
             <div
-              className={`${styles.tablaHeaderFamilias} ${isDark ? styles.tablaHeaderDark : styles.tablaHeaderLight}`}>
+              className={`${styles.tablaHeaderFamilias} ${isDark ? styles.tablaHeaderDark : styles.tablaHeaderLight}`}
+            >
               <span>Familia</span>
               <span>Código</span>
               <span>Proveedor</span>
@@ -310,7 +329,7 @@ const ProveedoresPage = () => {
                         expandido === f.cod_familia ? null : f.cod_familia,
                       )
                     }
-                    className={`${styles.tablaRowFamilias} ${isDark ? styles.tablaRowDark : styles.tablaRowLight} ${expandido === f.cod_familia ? styles.tablaRowActive : ''}`}
+                    className={`${styles.tablaRowFamilias} ${isDark ? styles.tablaRowDark : styles.tablaRowLight} ${expandido === f.cod_familia ? styles.tablaRowActive : ""}`}
                   >
                     <span
                       className={`${styles.nombre} ${isDark ? styles.dark : styles.light}`}
@@ -440,11 +459,15 @@ const ProveedoresPage = () => {
                       ? styles.deleteConfirmBtn
                       : styles.submitBtn
                   }
-                  onClick={() =>
-                    itemEliminar.tipo === "proveedor"
-                      ? desactivarProveedor(itemEliminar.item.id_proveedor)
-                      : eliminarFamilia(itemEliminar.item.cod_familia)
-                  }
+                  onClick={() => {
+                    if (itemEliminar.tipo === "proveedor") {
+                      itemEliminar.item.activo
+                        ? desactivarProveedor(itemEliminar.item.id_proveedor)
+                        : activarProveedor(itemEliminar.item.id_proveedor);
+                    } else {
+                      eliminarFamilia(itemEliminar.item.cod_familia);
+                    }
+                  }}
                 >
                   Confirmar
                 </button>
