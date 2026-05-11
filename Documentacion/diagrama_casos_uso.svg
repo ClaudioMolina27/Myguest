@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1700" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      .titulo { font-size: 24px; font-weight: bold; fill: #1f3a68; }
+      .subtitulo { font-size: 14px; fill: #555; font-style: italic; }
+      .actor-label { font-size: 14px; font-weight: bold; fill: #1f3a68; text-anchor: middle; }
+      .actor-secundario { font-size: 14px; font-weight: bold; fill: #6a1b9a; text-anchor: middle; }
+      .uc-text { font-size: 11px; fill: #222; text-anchor: middle; }
+      .uc-id { font-size: 10px; font-weight: bold; fill: #1f3a68; text-anchor: middle; }
+      .grupo-label { font-size: 13px; font-weight: bold; fill: #1f3a68; font-style: italic; text-anchor: middle; }
+      .relacion { stroke: #888; stroke-width: 1; fill: none; opacity: 0.7; }
+      .relacion-sec { stroke: #ba68c8; stroke-width: 1; fill: none; opacity: 0.7; }
+      .relacion-include { stroke: #555; stroke-width: 1.2; fill: none; stroke-dasharray: 6,3; }
+      .uc-oval { fill: #FFF4D6; stroke: #1f3a68; stroke-width: 1.5; }
+      .uc-grupo-auth { fill: #E3F2FD; stroke: #1565C0; stroke-width: 1.5; }
+      .uc-grupo-cat { fill: #FFF9C4; stroke: #F9A825; stroke-width: 1.5; }
+      .uc-grupo-fact { fill: #C8E6C9; stroke: #2E7D32; stroke-width: 1.5; }
+      .uc-grupo-op { fill: #FFCCBC; stroke: #D84315; stroke-width: 1.5; }
+      .uc-grupo-plan { fill: #E1BEE7; stroke: #6A1B9A; stroke-width: 1.5; }
+      .sistema-borde { fill: none; stroke: #1f3a68; stroke-width: 2; }
+      .sistema-titulo { font-size: 18px; font-weight: bold; fill: #1f3a68; text-anchor: middle; }
+      .grupo-box { fill: none; stroke-width: 1; stroke-dasharray: 4,3; opacity: 0.5; }
+      .leyenda { font-size: 12px; fill: #333; }
+      .extends-label { font-size: 9px; fill: #555; font-style: italic; }
+    </style>
+
+    <symbol id="actor" viewBox="-20 0 40 60">
+      <circle cx="0" cy="8" r="7" fill="white" stroke="#1f3a68" stroke-width="2"/>
+      <line x1="0" y1="15" x2="0" y2="38" stroke="#1f3a68" stroke-width="2"/>
+      <line x1="-12" y1="22" x2="12" y2="22" stroke="#1f3a68" stroke-width="2"/>
+      <line x1="0" y1="38" x2="-10" y2="55" stroke="#1f3a68" stroke-width="2"/>
+      <line x1="0" y1="38" x2="10" y2="55" stroke="#1f3a68" stroke-width="2"/>
+    </symbol>
+
+    <symbol id="actor-sec" viewBox="-20 0 40 60">
+      <circle cx="0" cy="8" r="7" fill="white" stroke="#6a1b9a" stroke-width="2"/>
+      <line x1="0" y1="15" x2="0" y2="38" stroke="#6a1b9a" stroke-width="2"/>
+      <line x1="-12" y1="22" x2="12" y2="22" stroke="#6a1b9a" stroke-width="2"/>
+      <line x1="0" y1="38" x2="-10" y2="55" stroke="#6a1b9a" stroke-width="2"/>
+      <line x1="0" y1="38" x2="10" y2="55" stroke="#6a1b9a" stroke-width="2"/>
+    </symbol>
+
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Título -->
+  <text x="900" y="40" class="titulo" text-anchor="middle">Diagrama de Casos de Uso</text>
+  <text x="900" y="62" class="subtitulo" text-anchor="middle">Sistema de Gestión de Bodega y Talleres Académicos</text>
+
+  <!-- Caja del sistema -->
+  <rect x="290" y="90" width="1220" height="1340" rx="10" class="sistema-borde"/>
+  <text x="900" y="115" class="sistema-titulo">Sistema</text>
+
+  <!-- ============ ACTORES PRINCIPALES (IZQUIERDA) ============ -->
+  
+  <use href="#actor" x="120" y="200" width="50" height="70"/>
+  <text x="120" y="290" class="actor-label">Administrador</text>
+
+  <use href="#actor" x="120" y="560" width="50" height="70"/>
+  <text x="120" y="650" class="actor-label">Jefe de Bodega</text>
+
+  <use href="#actor" x="120" y="970" width="50" height="70"/>
+  <text x="120" y="1060" class="actor-label">Profesor</text>
+
+  <use href="#actor" x="120" y="1290" width="50" height="70"/>
+  <text x="120" y="1380" class="actor-label">Todos los Roles</text>
+  <text x="120" y="1398" class="subtitulo" text-anchor="middle">(generalización)</text>
+
+  <!-- ============ ACTOR SECUNDARIO (DERECHA) ============ -->
+  
+  <use href="#actor-sec" x="1670" y="760" width="50" height="70"/>
+  <text x="1670" y="850" class="actor-secundario">Sistema</text>
+  <text x="1670" y="868" class="actor-secundario">(IA Local)</text>
+  <text x="1670" y="886" class="subtitulo" text-anchor="middle">«actor secundario»</text>
+
+  <!-- ============ GRUPO 1: AUTENTICACIÓN & USUARIOS ============ -->
+  <rect x="320" y="155" width="320" height="380" rx="8" class="grupo-box" stroke="#1565C0"/>
+  <text x="480" y="178" class="grupo-label" fill="#1565C0">Autenticación &amp; Usuarios</text>
+
+  <ellipse cx="480" cy="215" rx="115" ry="26" class="uc-grupo-auth"/>
+  <text x="480" y="211" class="uc-id">CU1</text>
+  <text x="480" y="225" class="uc-text">Iniciar Sesión</text>
+  
+  <ellipse cx="480" cy="280" rx="115" ry="26" class="uc-grupo-auth"/>
+  <text x="480" y="276" class="uc-id">CU2</text>
+  <text x="480" y="290" class="uc-text">Registrar Nuevo Usuario</text>
+  
+  <ellipse cx="480" cy="345" rx="115" ry="26" class="uc-grupo-auth"/>
+  <text x="480" y="341" class="uc-id">CU3</text>
+  <text x="480" y="355" class="uc-text">Actualizar Perfil de Usuario</text>
+  
+  <ellipse cx="480" cy="410" rx="115" ry="26" class="uc-grupo-auth"/>
+  <text x="480" y="406" class="uc-id">CU5</text>
+  <text x="480" y="420" class="uc-text">Gestionar Roles y Permisos</text>
+  
+  <ellipse cx="480" cy="475" rx="115" ry="26" class="uc-grupo-auth"/>
+  <text x="480" y="471" class="uc-id">CU6</text>
+  <text x="480" y="485" class="uc-text">Recuperar Contraseña</text>
+
+  <!-- ============ GRUPO 2: CATÁLOGO & PROVEEDORES ============ -->
+  <rect x="320" y="565" width="320" height="320" rx="8" class="grupo-box" stroke="#F9A825"/>
+  <text x="480" y="588" class="grupo-label" fill="#F9A825">Catálogo &amp; Proveedores</text>
+
+  <ellipse cx="480" cy="625" rx="115" ry="26" class="uc-grupo-cat"/>
+  <text x="480" y="621" class="uc-id">CU7</text>
+  <text x="480" y="635" class="uc-text">Registrar Proveedores</text>
+  
+  <ellipse cx="480" cy="695" rx="115" ry="26" class="uc-grupo-cat"/>
+  <text x="480" y="691" class="uc-id">CU9</text>
+  <text x="480" y="705" class="uc-text">Gestionar Catálogo Maestro</text>
+  
+  <ellipse cx="480" cy="770" rx="125" ry="30" class="uc-grupo-cat"/>
+  <text x="480" y="764" class="uc-id">CU10</text>
+  <text x="480" y="778" class="uc-text">Crear/Modificar</text>
+  <text x="480" y="791" class="uc-text">Fichas Técnicas (Recetas)</text>
+  
+  <ellipse cx="480" cy="845" rx="125" ry="26" class="uc-grupo-cat"/>
+  <text x="480" y="841" class="uc-id">CU11</text>
+  <text x="480" y="855" class="uc-text">Escalar Receta Dinámicamente</text>
+
+  <!-- ============ GRUPO 3: PLANIFICACIÓN & AUDITORÍA ============ -->
+  <rect x="320" y="930" width="320" height="270" rx="8" class="grupo-box" stroke="#6A1B9A"/>
+  <text x="480" y="953" class="grupo-label" fill="#6A1B9A">Planificación &amp; Auditoría</text>
+
+  <ellipse cx="480" cy="995" rx="130" ry="30" class="uc-grupo-plan"/>
+  <text x="480" y="989" class="uc-id">CU25</text>
+  <text x="480" y="1003" class="uc-text">Planificar Compra</text>
+  <text x="480" y="1016" class="uc-text">Anticipada (30 días)</text>
+  
+  <ellipse cx="480" cy="1075" rx="130" ry="26" class="uc-grupo-plan"/>
+  <text x="480" y="1071" class="uc-id">CU26</text>
+  <text x="480" y="1085" class="uc-text">Generar Proyección Presup.</text>
+  
+  <ellipse cx="480" cy="1150" rx="130" ry="30" class="uc-grupo-plan"/>
+  <text x="480" y="1144" class="uc-id">CU27</text>
+  <text x="480" y="1158" class="uc-text">Auditar Trazabilidad</text>
+  <text x="480" y="1171" class="uc-text">Forense (Hashes)</text>
+
+  <!-- ============ GRUPO 4: INGRESO DE FACTURAS E INVENTARIO ============ -->
+  <rect x="950" y="155" width="500" height="540" rx="8" class="grupo-box" stroke="#2E7D32"/>
+  <text x="1200" y="178" class="grupo-label" fill="#2E7D32">Ingreso de Facturas e Inventario</text>
+
+  <ellipse cx="1200" cy="215" rx="115" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="211" class="uc-id">CU12</text>
+  <text x="1200" y="225" class="uc-text">Ingresar Factura</text>
+  
+  <ellipse cx="1200" cy="290" rx="130" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="286" class="uc-id">CU13</text>
+  <text x="1200" y="300" class="uc-text">Procesar Documento (OCR/NLP)</text>
+  
+  <ellipse cx="1200" cy="365" rx="130" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="361" class="uc-id">CU14</text>
+  <text x="1200" y="375" class="uc-text">Mapear Productos a Inventario</text>
+  
+  <ellipse cx="1200" cy="440" rx="125" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="436" class="uc-id">CU15</text>
+  <text x="1200" y="450" class="uc-text">Validar Ingreso (Split-Screen)</text>
+  
+  <ellipse cx="1200" cy="515" rx="130" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="511" class="uc-id">CU16</text>
+  <text x="1200" y="525" class="uc-text">Conciliar con Orden de Compra</text>
+  
+  <ellipse cx="1200" cy="590" rx="130" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="586" class="uc-id">CU17</text>
+  <text x="1200" y="600" class="uc-text">Actualizar Inventario y Costos</text>
+  
+  <ellipse cx="1200" cy="660" rx="125" ry="26" class="uc-grupo-fact"/>
+  <text x="1200" y="656" class="uc-id">CU18</text>
+  <text x="1200" y="670" class="uc-text">Registrar Lotes y Caducidad</text>
+
+  <!-- ============ GRUPO 5: OPERACIÓN DE BODEGA ============ -->
+  <rect x="950" y="725" width="500" height="430" rx="8" class="grupo-box" stroke="#D84315"/>
+  <text x="1200" y="748" class="grupo-label" fill="#D84315">Operación de Bodega</text>
+
+  <ellipse cx="1200" cy="785" rx="120" ry="26" class="uc-grupo-op"/>
+  <text x="1200" y="781" class="uc-id">CU20</text>
+  <text x="1200" y="795" class="uc-text">Monitorear Stock Dinámico</text>
+  
+  <ellipse cx="1200" cy="855" rx="125" ry="26" class="uc-grupo-op"/>
+  <text x="1200" y="851" class="uc-id">CU21</text>
+  <text x="1200" y="865" class="uc-text">Generar Carros por Jornada</text>
+  
+  <ellipse cx="1200" cy="930" rx="125" ry="30" class="uc-grupo-op"/>
+  <text x="1200" y="924" class="uc-id">CU22</text>
+  <text x="1200" y="938" class="uc-text">Ejecutar Checklist Digital</text>
+  <text x="1200" y="951" class="uc-text" font-size="9">(Pick and Pack)</text>
+  
+  <ellipse cx="1200" cy="1005" rx="135" ry="26" class="uc-grupo-op"/>
+  <text x="1200" y="1001" class="uc-id">CU23</text>
+  <text x="1200" y="1015" class="uc-text">Alertar Faltantes en Tiempo Real</text>
+  
+  <ellipse cx="1200" cy="1080" rx="125" ry="26" class="uc-grupo-op"/>
+  <text x="1200" y="1076" class="uc-id">CU24</text>
+  <text x="1200" y="1090" class="uc-text">Registrar Mermas y Retornos</text>
+
+  <!-- ============ RELACIONES ACTOR-CU (limpias, sin cruces innecesarios) ============ -->
+  
+  <!-- Administrador (centro en ~145, 240) -->
+  <line x1="145" y1="240" x2="365" y2="215" class="relacion"/>
+  <line x1="145" y1="245" x2="365" y2="280" class="relacion"/>
+  <line x1="145" y1="250" x2="365" y2="410" class="relacion"/>
+  <line x1="145" y1="255" x2="365" y2="625" class="relacion"/>
+  <line x1="145" y1="258" x2="365" y2="695" class="relacion"/>
+  <line x1="145" y1="262" x2="355" y2="770" class="relacion"/>
+  <line x1="145" y1="266" x2="1085" y2="215" class="relacion"/>
+  <line x1="145" y1="270" x2="1075" y2="440" class="relacion"/>
+  <line x1="145" y1="274" x2="350" y2="995" class="relacion"/>
+  <line x1="145" y1="278" x2="350" y2="1150" class="relacion"/>
+
+  <!-- Jefe de Bodega (centro ~145, 600) -->
+  <line x1="145" y1="600" x2="365" y2="695" class="relacion"/>
+  <line x1="145" y1="605" x2="355" y2="770" class="relacion"/>
+  <line x1="145" y1="610" x2="1085" y2="215" class="relacion"/>
+  <line x1="145" y1="615" x2="1075" y2="440" class="relacion"/>
+  <line x1="145" y1="620" x2="1070" y2="515" class="relacion"/>
+  <line x1="145" y1="625" x2="1070" y2="590" class="relacion"/>
+  <line x1="145" y1="628" x2="1075" y2="660" class="relacion"/>
+  <line x1="145" y1="632" x2="1080" y2="855" class="relacion"/>
+  <line x1="145" y1="635" x2="1075" y2="930" class="relacion"/>
+  <line x1="145" y1="638" x2="1065" y2="1005" class="relacion"/>
+  <line x1="145" y1="642" x2="1075" y2="1080" class="relacion"/>
+
+  <!-- Profesor (centro ~145, 1010) -->
+  <line x1="145" y1="1010" x2="355" y2="845" class="relacion"/>
+  <line x1="145" y1="1015" x2="1065" y2="1005" class="relacion"/>
+  <line x1="145" y1="1020" x2="1075" y2="1080" class="relacion"/>
+
+  <!-- Todos los Roles (centro ~145, 1330) -->
+  <line x1="145" y1="1330" x2="365" y2="215" class="relacion"/>
+  <line x1="145" y1="1333" x2="365" y2="345" class="relacion"/>
+  <line x1="145" y1="1336" x2="365" y2="475" class="relacion"/>
+
+  <!-- ============ RELACIONES SISTEMA IA (DERECHA) ============ -->
+  <!-- Sistema IA en ~1695, 800 -->
+  
+  <line x1="1645" y1="790" x2="1330" y2="290" class="relacion-sec"/>
+  <line x1="1645" y1="792" x2="1330" y2="365" class="relacion-sec"/>
+  <line x1="1645" y1="795" x2="1330" y2="515" class="relacion-sec"/>
+  <line x1="1645" y1="798" x2="1330" y2="590" class="relacion-sec"/>
+  <line x1="1645" y1="800" x2="1320" y2="785" class="relacion-sec"/>
+  <line x1="1645" y1="803" x2="1325" y2="855" class="relacion-sec"/>
+  <line x1="1645" y1="810" x2="605" y2="845" class="relacion-sec"/>
+  <line x1="1645" y1="815" x2="610" y2="995" class="relacion-sec"/>
+  <line x1="1645" y1="820" x2="610" y2="1075" class="relacion-sec"/>
+
+  <!-- ============ RELACIONES <<include>> y <<extend>> ============ -->
+  
+  <!-- CU12 -> CU13 «include» -->
+  <line x1="1200" y1="241" x2="1200" y2="261" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="256" class="extends-label">«include»</text>
+  
+  <!-- CU13 -> CU14 «include» -->
+  <line x1="1200" y1="316" x2="1200" y2="336" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="331" class="extends-label">«include»</text>
+  
+  <!-- CU15 -> CU16 «include» -->
+  <line x1="1200" y1="466" x2="1200" y2="486" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="481" class="extends-label">«include»</text>
+  
+  <!-- CU17 -> CU18 «include» -->
+  <line x1="1200" y1="616" x2="1200" y2="630" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="627" class="extends-label">«include»</text>
+
+  <!-- CU23 extiende CU22 «extend» -->
+  <line x1="1200" y1="979" x2="1200" y2="958" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="974" class="extends-label">«extend»</text>
+
+  <!-- CU21 -> CU22 «include» -->
+  <line x1="1200" y1="881" x2="1200" y2="897" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="1245" y="894" class="extends-label">«include»</text>
+
+  <!-- ============ LEYENDA ============ -->
+  <rect x="320" y="1230" width="1130" height="180" rx="8" fill="#fafafa" stroke="#ccc"/>
+  <text x="345" y="1258" class="grupo-label" text-anchor="start" fill="#1f3a68">Leyenda</text>
+  
+  <use href="#actor" x="365" y="1275" width="30" height="45"/>
+  <text x="415" y="1305" class="leyenda">Actor principal (humano)</text>
+  
+  <use href="#actor-sec" x="365" y="1335" width="30" height="45"/>
+  <text x="415" y="1365" class="leyenda">Actor secundario (Sistema IA Local — automatiza procesos)</text>
+  
+  <ellipse cx="800" cy="1296" rx="40" ry="14" class="uc-oval"/>
+  <text x="800" y="1300" class="uc-text">Caso de Uso</text>
+  <text x="855" y="1300" class="leyenda">Funcionalidad del sistema</text>
+  
+  <line x1="780" y1="1340" x2="840" y2="1340" class="relacion"/>
+  <text x="855" y="1344" class="leyenda">Asociación actor — caso de uso</text>
+  
+  <line x1="780" y1="1370" x2="840" y2="1370" class="relacion-include" marker-end="url(#arrowhead)"/>
+  <text x="855" y="1374" class="leyenda">«include» / «extend» — dependencia entre casos de uso</text>
+
+  <text x="1130" y="1296" class="leyenda" font-style="italic">• «include»: el CU origen siempre ejecuta al destino</text>
+  <text x="1130" y="1316" class="leyenda" font-style="italic">• «extend»: el CU origen extiende opcionalmente al destino</text>
+  <text x="1130" y="1336" class="leyenda" font-style="italic">• "Todos los Roles" = generalización de Admin, Jefe</text>
+  <text x="1130" y="1352" class="leyenda" font-style="italic">  Bodega, Profesor y Contabilidad</text>
+
+  <text x="900" y="1465" class="subtitulo" text-anchor="middle">Fuente: RESUMEN Estado de Avance Casos de Uso — consolidado de CU únicos</text>
+</svg>
