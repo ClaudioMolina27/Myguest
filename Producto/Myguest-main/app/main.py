@@ -37,11 +37,15 @@ from app.routers.usuario_router import router as usuario_router
 from app.routers.auth_router import router as auth_router
 from app.routers.inventario_router import router as inventario_router
 from app.routers.proveedor_router import router as proveedor_router
+from app.routers.academico_router import router as academico_router
+from app.routers.facturacion_router import router as facturacion_router
 
-app.include_router(auth_router,       prefix="/auth",      tags=["Auth"])
-app.include_router(usuario_router,    prefix="/usuarios",  tags=["Usuarios"])
-app.include_router(inventario_router, prefix="",           tags=["Inventario"])
-app.include_router(proveedor_router,  prefix="",           tags=["Proveedores"])
+app.include_router(auth_router,        prefix="/auth",       tags=["Auth"])
+app.include_router(usuario_router,     prefix="/usuarios",   tags=["Usuarios"])
+app.include_router(inventario_router,  prefix="",            tags=["Inventario"])
+app.include_router(proveedor_router,   prefix="",            tags=["Proveedores"])
+app.include_router(academico_router,   prefix="",            tags=["Academico"])
+app.include_router(facturacion_router, prefix="",            tags=["Facturacion"])
 
 
 @app.get("/", tags=["Health"])
