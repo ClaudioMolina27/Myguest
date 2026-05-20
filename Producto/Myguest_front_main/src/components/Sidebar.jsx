@@ -6,6 +6,7 @@ import styles from './Sidebar.module.css'
 const menuItems = [
   { path: '/dashboard', label: 'Dashboard', icon: '📊' },
   { path: '/usuarios', label: 'Usuarios', icon: '👤' },
+  { path: '/academico', label: 'Académico', icon: '🎓' },
   { path: '/inventario', label: 'Inventario', icon: '📦' },
   { path: '/proveedores', label: 'Proveedores', icon: '🏭' },
   { path: '/compras', label: 'Compras', icon: '🛒' },
