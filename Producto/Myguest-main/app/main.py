@@ -39,13 +39,17 @@ from app.routers.inventario_router import router as inventario_router
 from app.routers.proveedor_router import router as proveedor_router
 from app.routers.academico_router import router as academico_router
 from app.routers.facturacion_router import router as facturacion_router
+from app.routers.compras_router import router as compras_router
+from app.routers.devolucion_router import router as devolucion_router
 
-app.include_router(auth_router,        prefix="/auth",       tags=["Auth"])
-app.include_router(usuario_router,     prefix="/usuarios",   tags=["Usuarios"])
-app.include_router(inventario_router,  prefix="",            tags=["Inventario"])
-app.include_router(proveedor_router,   prefix="",            tags=["Proveedores"])
-app.include_router(academico_router,   prefix="",            tags=["Academico"])
-app.include_router(facturacion_router, prefix="",            tags=["Facturacion"])
+app.include_router(auth_router,        prefix="/auth",      tags=["Auth"])
+app.include_router(usuario_router,     prefix="/usuarios",  tags=["Usuarios"])
+app.include_router(inventario_router,  prefix="",           tags=["Inventario"])
+app.include_router(proveedor_router,   prefix="",           tags=["Proveedores"])
+app.include_router(academico_router,   prefix="",           tags=["Academico"])
+app.include_router(facturacion_router, prefix="",           tags=["Facturacion"])
+app.include_router(compras_router,     prefix="",           tags=["Compras"])
+app.include_router(devolucion_router,  prefix="",           tags=["Devoluciones y Mermas"])
 
 
 @app.get("/", tags=["Health"])
