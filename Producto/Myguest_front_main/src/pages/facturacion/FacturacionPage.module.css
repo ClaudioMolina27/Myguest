@@ -432,3 +432,126 @@
   color: #6b7280;
   font-size: 14px;
 }
+/* ══════════════════════════════
+   RESPONSIVO
+══════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filtros {
+    flex-wrap: wrap;
+  }
+
+  .select {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 2fr 2fr 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 2fr 2fr 1fr 40px;
+  }
+
+  /* Oculta columna Total */
+  .tablaHeader > *:nth-child(4),
+  .tablaRow > *:nth-child(4) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detalleHeader {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .detalleRow {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  /* Oculta columna Subtotal en detalle */
+  .detalleHeader > *:nth-child(4),
+  .detalleRow > *:nth-child(4) {
+    display: none;
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .filtros {
+    flex-direction: column;
+  }
+
+  .select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  /* Oculta Proveedor y Total en móvil */
+  .tablaHeader > *:nth-child(2),
+  .tablaRow > *:nth-child(2),
+  .tablaHeader > *:nth-child(4),
+  .tablaRow > *:nth-child(4) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .acordeonAcciones {
+    flex-direction: column;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .detalleHeader {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .detalleRow {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .detalleHeader > *:nth-child(3),
+  .detalleRow > *:nth-child(3),
+  .detalleHeader > *:nth-child(4),
+  .detalleRow > *:nth-child(4) {
+    display: none;
+  }
+
+  .confirmModal {
+    margin: 16px;
+    padding: 24px;
+  }
+}

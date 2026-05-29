@@ -517,3 +517,136 @@
   transition: background-color 0.2s;
   cursor: pointer;
 }
+/* ══════════════════════════════
+   RESPONSIVO
+══════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 2fr 1fr 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 2fr 1fr 1fr 40px;
+  }
+
+  /* Oculta columna Teléfono */
+  .tablaHeader > *:nth-child(4),
+  .tablaRow > *:nth-child(4) {
+    display: none;
+  }
+
+  .tablaHeaderFamilias {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  .tablaRowFamilias {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  /* Oculta columna proveedor en familias */
+  .tablaHeaderFamilias > *:nth-child(3),
+  .tablaRowFamilias > *:nth-child(3) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .controles {
+    flex-wrap: wrap;
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .pestanas {
+    flex-wrap: wrap;
+  }
+
+  .pestana {
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .controles {
+    flex-direction: column;
+  }
+
+  .busqueda {
+    width: 100%;
+  }
+
+  .filtroBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  /* Oculta RUT y Teléfono en móvil */
+  .tablaHeader > *:nth-child(3),
+  .tablaRow > *:nth-child(3),
+  .tablaHeader > *:nth-child(4),
+  .tablaRow > *:nth-child(4) {
+    display: none;
+  }
+
+  .tablaHeaderFamilias {
+    grid-template-columns: 1fr 40px;
+  }
+
+  .tablaRowFamilias {
+    grid-template-columns: 1fr 40px;
+  }
+
+  .tablaHeaderFamilias > *:nth-child(2),
+  .tablaRowFamilias > *:nth-child(2),
+  .tablaHeaderFamilias > *:nth-child(3),
+  .tablaRowFamilias > *:nth-child(3) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .acordeonAcciones {
+    flex-direction: column;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .confirmModal {
+    margin: 16px;
+    padding: 24px;
+  }
+}

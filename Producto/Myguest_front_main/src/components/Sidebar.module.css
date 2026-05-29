@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease;
-  z-index: 50;
+  z-index: 100;
   overflow-y: auto;
 }
 
@@ -27,6 +27,11 @@
 
 .closed {
   transform: translateX(-240px);
+}
+
+/* Overlay para móvil — tapa el contenido cuando el sidebar está abierto */
+.overlay {
+  display: none;
 }
 
 /* Usuario */
@@ -66,13 +71,8 @@
   text-overflow: ellipsis;
 }
 
-.dark .userName {
-  color: #ffffff;
-}
-
-.light .userName {
-  color: #111827;
-}
+.dark .userName { color: #ffffff; }
+.light .userName { color: #111827; }
 
 .userRole {
   font-size: 11px;
@@ -100,23 +100,11 @@
   transition: all 0.2s ease;
 }
 
-.navDark {
-  color: #9ca3af;
-}
+.navDark       { color: #9ca3af; }
+.navDark:hover { background-color: #1f2937; color: #ffffff; }
 
-.navDark:hover {
-  background-color: #1f2937;
-  color: #ffffff;
-}
-
-.navLight {
-  color: #6b7280;
-}
-
-.navLight:hover {
-  background-color: #f3f4f6;
-  color: #111827;
-}
+.navLight       { color: #6b7280; }
+.navLight:hover { background-color: #f3f4f6; color: #111827; }
 
 .active {
   background-color: #22c55e !important;
@@ -127,6 +115,7 @@
   font-size: 18px;
   width: 24px;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .label {
@@ -151,6 +140,24 @@
   width: calc(100% - 16px);
 }
 
-.logoutBtn:hover {
-  background-color: #2d1b1b;
+.logoutBtn:hover { background-color: #2d1b1b; }
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .sidebar {
+    z-index: 200;
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    top: 52px;
+  }
+
+  .overlayHidden {
+    display: none;
+  }
 }

@@ -402,3 +402,92 @@
   color: #6b7280;
   margin: 0;
 }
+/* ══════════════════════════════
+   RESPONSIVO
+══════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .modulosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .bienvenida {
+    align-items: flex-start;
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .tarjeta {
+    padding: 14px;
+  }
+
+  .tarjetaValue {
+    font-size: 24px;
+  }
+
+  .tarjetaAlertaValue {
+    font-size: 24px;
+  }
+
+  .tarjetaIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+
+  .modulosGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .moduloCard {
+    padding: 16px;
+    min-height: 100px;
+  }
+
+  .moduloCardIcon {
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .moduloCardLabel {
+    font-size: 13px;
+  }
+
+  .moduloCardDesc {
+    font-size: 11px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .alertaItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

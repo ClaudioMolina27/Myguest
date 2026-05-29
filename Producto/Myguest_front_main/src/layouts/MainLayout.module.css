@@ -23,8 +23,31 @@
   padding: 24px;
   transition: margin-left 0.3s ease;
   margin-left: 0;
+  min-width: 0;
 }
 
 .mainShifted {
   margin-left: 240px;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .mainShifted {
+    margin-left: 0;
+  }
+
+  .main {
+    padding: 16px;
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+  .main {
+    padding: 12px;
+  }
+
+  .mainShifted {
+    margin-left: 0;
+  }
 }

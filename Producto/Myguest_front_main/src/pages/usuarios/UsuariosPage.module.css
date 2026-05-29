@@ -488,3 +488,88 @@
 .deleteConfirmBtn:hover {
   background-color: #dc2626;
 }
+/* ══════════════════════════════
+   RESPONSIVO
+══════════════════════════════ */
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .newBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 2fr 1fr 40px;
+  }
+
+  /* Oculta columna Carrera */
+  .tablaHeader > *:nth-child(3),
+  .tablaRow > *:nth-child(3) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Móvil ── */
+@media (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .tablaHeader {
+    grid-template-columns: 1fr 40px;
+  }
+
+  .tablaRow {
+    grid-template-columns: 1fr 40px;
+  }
+
+  /* Oculta Rol y Carrera en móvil */
+  .tablaHeader > *:nth-child(2),
+  .tablaRow > *:nth-child(2),
+  .tablaHeader > *:nth-child(3),
+  .tablaRow > *:nth-child(3) {
+    display: none;
+  }
+
+  .acordeonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .acordeonAcciones {
+    flex-direction: column;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filtrosBtns {
+    gap: 6px;
+  }
+
+  .filtroBtn {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+
+  .confirmModal {
+    margin: 16px;
+    padding: 24px;
+  }
+}
