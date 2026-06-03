@@ -9,6 +9,8 @@ import ProveedoresPage from '../pages/proveedores/ProveedoresPage'
 import FacturacionPage from '../pages/facturacion/FacturacionPage'
 import AcademicoPage from '../pages/academico/AcademicoPage'
 import ComprasPage from '../pages/compras/ComprasPage';
+import MermasPage from '../pages/mermas/MermasPage';
+import DevolucionesPage from '../pages/devoluciones/DevolucionesPage';
 
 
 const PrivateRoute = ({ children }) => {
@@ -28,7 +30,8 @@ const AppRouter = () => {
         <Route path="/compras" element={<PrivateRoute><ComprasPage /></PrivateRoute>} />
         <Route path="/proveedores" element={<PrivateRoute><ProveedoresPage /></PrivateRoute>} />
         <Route path="/facturacion" element={<PrivateRoute><FacturacionPage /></PrivateRoute>} />
-        <Route path="/mermas" element={<PrivateRoute><EnConstruccion titulo="Mermas" /></PrivateRoute>} />
+        <Route path="/mermas" element={<PrivateRoute><MermasPage /></PrivateRoute>} />
+        <Route path="/devoluciones" element={<PrivateRoute><DevolucionesPage /></PrivateRoute>} />
         <Route path="/reportes" element={<PrivateRoute><EnConstruccion titulo="Reportes" /></PrivateRoute>} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>

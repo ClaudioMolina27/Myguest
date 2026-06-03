@@ -12,6 +12,7 @@ const menuItems = [
   { path: '/compras',     label: 'Compras',     icon: '🛒' },
   { path: '/facturacion', label: 'Facturación', icon: '📄' },
   { path: '/mermas',      label: 'Mermas',      icon: '🗑️' },
+  { path: '/devoluciones', label: 'Devoluciones', icon: '↩️' },
   { path: '/reportes',    label: 'Reportes',    icon: '📈' },
 ]
 
